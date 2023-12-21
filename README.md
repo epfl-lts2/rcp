@@ -17,10 +17,12 @@ https://wiki.rcp.epfl.ch/home/CaaS/Quick_Start
 - set the default project 
 - NB: you will *not* be able to build docker images on the faculty jumphost
 
+# Running a job on the cluster
+
 ## Build a custom docker image
 If you want to fine tune the environment, build your own docker image
 - First, install docker on your computer following the [instructions](https://docs.docker.com/engine/install/)
-- You can use the instructions here https://wiki.rcp.epfl.ch/en/home/CaaS/how-to-rootless or modify the `Dockerfile` provided in this repository. 
+- You can use the instructions here https://wiki.rcp.epfl.ch/en/home/CaaS/how-to-rootless or modify the `Dockerfile` provided in this repository. The supplied `Dockerfile` and `environment.yml` will build an image, based on Ubuntu "Focal", containing a SSH server, and a (mini)conda environment with pytorch, pytorch geometric and the required NVidia libraries to run GPU code.
 - Although it is possible to skip the uid/gid customization, remember the files created on a volume outside the container will have messed up ownership in this case.
 - GID is common to LTS2 = 10423. Your uid is unique, check it in the directory as explained in the link above
 - If not done, login with your gaspar username/password on the [EPFL registry](https://registry.rcp.epfl.ch) and create a PUBLIC project. While containers can work with private registries, the setup is much more complicated. If your docker image does not contain sensitive information (and it really should not), go for public.
