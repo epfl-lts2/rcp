@@ -15,10 +15,11 @@ https://wiki.rcp.epfl.ch/home/CaaS/Quick_Start
 - this host already has `kubectl` and `runai` installed
 - download the file https://wiki.rcp.epfl.ch/public/files/config.yaml and save it as `~/.kube/config` (you may need to create the `.kube` directory in your home folder)
 - set the default project 
-
+- NB: you will *not* be able to build docker images on the faculty jumphost
 
 ## Build a custom docker image
-- If you want to fine tune the environment, build your own docker image
+If you want to fine tune the environment, build your own docker image
+- First, install docker on your computer following the [instructions](https://docs.docker.com/engine/install/)
 - You can use the instructions here https://wiki.rcp.epfl.ch/en/home/CaaS/how-to-rootless or modify the `Dockerfile` provided in this repository. 
 - Although it is possible to skip the uid/gid customization, remember the files created on a volume outside the container will have messed up ownership in this case.
 - GID is common to LTS2 = 10423. Your uid is unique, check it in the directory as explained in the link above
