@@ -17,9 +17,9 @@ https://wiki.rcp.epfl.ch/home/CaaS/Quick_Start
 - set the default project 
 
 
-# Build a custom docker image
+## Build a custom docker image
 - If you want to fine tune the environment, build your own docker image
-- You can use the instructions here https://wiki.rcp.epfl.ch/en/home/CaaS/how-to-rootless or modify the Dockerfile provided in this repository. 
+- You can use the instructions here https://wiki.rcp.epfl.ch/en/home/CaaS/how-to-rootless or modify the `Dockerfile` provided in this repository. 
 - Although it is possible to skip the uid/gid customization, remember the files created on a volume outside the container will have messed up ownership in this case.
 - GID is common to LTS2 = 10423. Your uid is unique, check it in the directory as explained in the link above
 - If not done, login with your gaspar username/password on the [EPFL registry](https://registry.rcp.epfl.ch) and create a PUBLIC project. While containers can work with private registries, the setup is much more complicated. If your docker image does not contain sensitive information (and it really should not), go for public.
@@ -34,3 +34,8 @@ docker build -t registry.rcp.epfl.ch/<projectname>/<reponame>:latest . \
 --build-arg SSH_PUBLIC_KEY='<Your SSH public key>' .
 ```
 - Then push it to the registry `docker push registry.rcp.epfl.ch/<projectname>/<reponame>:latest`
+
+## Submit a job to the cluster
+- Customize the sample `job.yml` file provided in this repository
+- Submit the job `kubectl create -f job.yml`. Although you can submit a job with the `runai` command, this is not recommended as it will not handle the uid/gid properly.
+- If everything goes well, your job should be running. You can then forward a port from the container to your local machine, e.g. `kubectl port-forward lts2-test-0-0 2022:2022` (check the container name on the dashboard and of course, adapt the port number accordingly to your needs).
