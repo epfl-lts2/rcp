@@ -22,4 +22,15 @@ https://wiki.rcp.epfl.ch/home/CaaS/Quick_Start
 - You can use the instructions here https://wiki.rcp.epfl.ch/en/home/CaaS/how-to-rootless or modify the Dockerfile provided in this repository. 
 - Although it is possible to skip the uid/gid customization, remember the files created on a volume outside the container will have messed up ownership in this case.
 - GID is common to LTS2 = 10423. Your uid is unique, check it in the directory as explained in the link above
-
+- If not done, login with your gaspar username/password on the [EPFL registry](https://registry.rcp.epfl.ch) and create a PUBLIC project. While containers can work with private registries, the setup is much more complicated. If your docker image does not contain sensitive information (and it really should not), go for public.
+- make sure you are logged in: `docker login registry.rcp.epfl.ch`
+- Build the container, e.g.
+```
+docker build -t registry.rcp.epfl.ch/<projectname>/<reponame>:latest . \
+--build-arg LDAP_GID=10423 \
+--build-arg LDAP_UID=<Your EPFL uid> \
+--build-arg LDAP_USERNAME=<Your gaspar username> \
+--build-arg LDAP_GROUPNAME=lts2 \
+--build-arg SSH_PUBLIC_KEY='<Your SSH public key>' .
+```
+- Then push it to the registry `docker push registry.rcp.epfl.ch/<projectname>/<reponame>:latest`
