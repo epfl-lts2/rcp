@@ -42,7 +42,7 @@ Port 2022
 HostKey /opt/ssh/ssh_host_rsa_key
 HostKey /opt/ssh/ssh_host_ecdsa_key
 HostKey /opt/ssh/ssh_host_ed25519_key
-LogLevel DEBUG3
+LogLevel INFO
 ChallengeResponseAuthentication no
 PidFile /opt/ssh/sshd.pid
 EOT
