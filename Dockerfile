@@ -4,7 +4,7 @@ FROM --platform=linux/amd64 ubuntu:focal
 
 # Installing ssh, rsync, rclone, anaconda, vscode-server
 ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update && apt-get install -y openssh-server sudo rsync rclone zsh git curl vim
+RUN apt-get update && apt-get install -y openssh-server sudo rsync rclone zsh git curl vim tmux
 RUN wget -O- https://aka.ms/install-vscode-server/setup.sh | sh
 
 # Build arguments, for 'LDAP_' argument you can find information in your people.epfl.ch page
