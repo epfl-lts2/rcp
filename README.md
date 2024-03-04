@@ -5,15 +5,17 @@ https://wiki.rcp.epfl.ch/home/CaaS/Quick_Start
 
 ## Local installation
 - Login to https://rcpepfl.run.ai/ using "Sign in with SSO"
-- download the runai CLI: help button on the top right of the page then click "Reasearcher command line interface" and follow the instructions. If you do not save it in a directory belonging to your `$PATH` remember to execute it as local binary, e.g. `./runai`
+- download the runai CLI: help button on the top right of the page then click "Researcher command line interface" and follow the instructions. If you do not save it in a directory belonging to your `$PATH` remember to execute it as local binary, e.g. `./runai`
 - download the file https://wiki.rcp.epfl.ch/public/files/config.yaml and save it as `~/.kube/config` (you may need to create the `.kube` directory in your home folder)
 - install `kubectl` using the documentation [here](https://kubernetes.io/docs/tasks/tools/#kubectl)
--  set the default project `./runai config project <project name>`  where the project name should be `lts2-<gaspar username>`
+- login with `runai login` (you will need to enter a code generated from the RunAI portal)
+- set the default project `./runai config project <project name>`  where the project name should be `lts2-<gaspar username>`
 
 ## Install using the faculty jumphost
 - you can use an existing host `haas001.rcp.epfl.ch` on which you can login using your gaspar username and password
 - this host already has `kubectl` and `runai` installed
 - download the file https://wiki.rcp.epfl.ch/public/files/config.yaml and save it as `~/.kube/config` (you may need to create the `.kube` directory in your home folder)
+- Do the `runai login` step
 - set the default project 
 - NB: you will *not* be able to build docker images on the faculty jumphost
 
