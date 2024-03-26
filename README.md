@@ -50,4 +50,5 @@ docker build -t registry.rcp.epfl.ch/<projectname>/<reponame>:latest user \
 ## Submit a job to the cluster
 - Customize the sample `job.yml` file provided in this repository
 - Submit the job `kubectl create -f job.yml`. Although you can submit a job with the `runai` command, this is not recommended as it will not handle the uid/gid properly.
-- If everything goes well, your job should be running. You can then forward a port from the container to your local machine, e.g. `kubectl port-forward lts2-test-0-0 2022:2022` (check the container name on the dashboard and of course, adapt the port number accordingly to your needs).
+- If everything goes well, your job should be running. You can then forward a port from the container to your local machine, e.g. `kubectl port-forward lts2-test-0-0 8888:8888` if you have a jupyter server running on the default port. (check the container name on the dashboard and of course, adapt the port number accordingly to your needs). 
+- You can access a shell inside the container by running `runai exec -it lts2-test /bin/bash` (using the appropriate job name of course)
