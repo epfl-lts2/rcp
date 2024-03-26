@@ -26,7 +26,7 @@ spec:
         workingDir : /home/<your gaspar username> # path to a temporary local folder in your container with rw access (not persistent)
     # warning, if you uncomment the "command" section below, it will supersede the CMD section of 
     # your Dockerfile 
-        command: ["/bin/zsh"]
+        command: ["/bin/bash"]
         args:
           - "-c"
           - "/opt/conda/bin/jupyter lab"
