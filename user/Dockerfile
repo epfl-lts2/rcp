@@ -1,5 +1,4 @@
-# Getting base ubuntu image with platform specified (important if you build on Apple Silicon)
-
+# Getting base image with platform specified (important if you build on Apple Silicon)
 FROM --platform=linux/amd64 registry.rcp.epfl.ch/lts2-public/pytorch-base:latest
 
 # Build arguments, for 'LDAP_' argument you can find information in your people.epfl.ch page
@@ -13,6 +12,14 @@ ARG LDAP_GID
 
 USER root
 RUN echo "${LDAP_USERNAME}  ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/sshd
+
+# Add customizations of the base environment here (or comment them out)
+WORKDIR /tmp
+ENV MAMBA_ROOT_PREFIX=/opt/conda
+COPY env-custom.yml .
+RUN micromamba install -y -n base -f /tmp/env-custom.yml && \
+    micromamba clean --all --yes
+
 
 RUN usermod "--login=${LDAP_USERNAME}" "--home=/home/${LDAP_USERNAME}" \
         --move-home "-u ${LDAP_UID}" "${MAMBA_USER}" && \
