@@ -26,15 +26,15 @@ spec:
         workingDir : /home/<your gaspar username> # path to a temporary local folder in your container with rw access (not persistent)
     # warning, if you uncomment the "command" section below, it will supersede the CMD section of 
     # your Dockerfile 
-    #   command: ["/bin/zsh"]
-    #   args:
-    #     - "-c"
-    #     - "$HOME/miniconda/envs/pytorch-base/bin/jupyter lab"
+        command: ["/bin/bash"]
+        args:
+          - "-c"
+          - "/opt/conda/bin/jupyter lab"
         resources:
           limits:
             nvidia.com/gpu: 1
         volumeMounts:
-          - mountPath: /home/<your gaspar username>/nas
+          - mountPath: /rcp
             name: nas #Reference to the volume name declared below under "Volumes" section
       volumes:
         # multiple Persistent Volume Claim (PVC) can be declare in this section
