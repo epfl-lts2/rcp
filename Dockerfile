@@ -1,4 +1,4 @@
-# Getting base ubuntu image with platform specified (important if you build on Apple Silicon)
+# Getting base image with platform specified (important if you build on Apple Silicon)
 FROM --platform=linux/amd64 mambaorg/micromamba:1-focal-cuda-11.8.0
 
 USER root

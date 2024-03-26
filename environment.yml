@@ -1,4 +1,4 @@
-name: pytorch-base # environment name
+name: base # environment name
 channels: # package channels (the ones that are declared with -c flag)
   - defaults
   - nvidia

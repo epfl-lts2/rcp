@@ -1,0 +1,11 @@
+name: base # environment name
+channels: # package channels (the ones that are declared with -c flag)
+  - defaults
+  - conda-forge
+dependencies: # desired packages, add or remove to satisfy youre requirements
+  - networkx
+  - pip:
+    - pytorch-lightning==1.9.4
+    - einops
+    - gin-config
+    - wandb
