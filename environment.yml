@@ -1,13 +1,14 @@
 name: pytorch-base # environment name
 channels: # package channels (the ones that are declared with -c flag)
+  - defaults
   - nvidia
   - pytorch
   - pyg
 dependencies: # desired packages, add or remove to satisfy youre requirements
   - python=3.10
-  - pytorch
-  - torchvision
-  - torchaudio
+  - pytorch=2.1.1 
+  - torchvision=0.16.1
+  - torchaudio=2.1.1
   - pytorch-cuda=11.8
   - pyg
   - scikit-learn

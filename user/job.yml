@@ -1,0 +1,44 @@
+apiVersion: run.ai/v1
+kind: RunaiJob
+metadata:
+  name: lts2-test # MUST BE SAME NAME of the "release" label under spec>templace>label bellow in order to get logs into the Run:AI dashboard
+  labels:
+    priorityClassName: "build" # Interactive Job if present, for Train Job REMOVE this line
+    user: <your gaspar username>
+spec:
+  template:
+    metadata:
+      labels:
+        user: <your gaspar username> # User e.g. firstname.lastname
+        release: lts2-test # MUST BE SAME NAME of your pod "name" specify in the metadata above in order to get logs into the Run:AI dashboard
+    spec:
+      schedulerName: runai-scheduler
+      restartPolicy: Never
+      securityContext:
+        # In order to access your PVC though NFS protocol, you must run your container with the correct UID/GID
+        # If you run you container as root, you won't be able to read or write to you persistent volune (PVC)
+        runAsUser: <epfl uid> # insert uid found in people.epfl in admistrative data
+        runAsGroup: 10423 # insert gid as found in people.epfl in admistrative data
+        fsGroup: 10423 # insert gid as found in people.epfl in admistrative data
+      containers:
+      - name: container-name
+        image: registry.rcp.epfl.ch/<projectname>/<reponame>:latest # path to you docker image in a registry
+        workingDir : /home/<your gaspar username> # path to a temporary local folder in your container with rw access (not persistent)
+    # warning, if you uncomment the "command" section below, it will supersede the CMD section of 
+    # your Dockerfile 
+        command: ["/bin/zsh"]
+        args:
+          - "-c"
+          - "/opt/conda/bin/jupyter lab"
+        resources:
+          limits:
+            nvidia.com/gpu: 1
+        volumeMounts:
+          - mountPath: /rcp
+            name: nas #Reference to the volume name declared below under "Volumes" section
+      volumes:
+        # multiple Persistent Volume Claim (PVC) can be declare in this section
+        # to list all pvc you have access, run "kubectl get pvc"
+        - name: nas # NAME of the volume that is used in the volumeMounts section aboce
+          persistentVolumeClaim:
+            claimName: runai-lts2-<your gaspar username>-scratch # Name of the PVC you can get. Check it by running `kubectl get pvc`
