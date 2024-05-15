@@ -1,5 +1,5 @@
 # Getting base image with platform specified (important if you build on Apple Silicon)
-FROM --platform=linux/amd64 mambaorg/micromamba:1-focal-cuda-11.8.0
+FROM --platform=linux/amd64 mambaorg/micromamba:1-jammy-cuda-11.8.0
 
 USER root
 # Installing ssh, rsync, rclone, anaconda, vscode-server
@@ -16,6 +16,7 @@ ENV MAMBA_DISABLE_LOCKFILE=TRUE
 
 
 COPY environment.yml .
+COPY condarc ${MAMBA_ROOT_PREFIX}
 RUN micromamba install -y -n base -f /tmp/environment.yml && \
     micromamba clean --all --yes
 

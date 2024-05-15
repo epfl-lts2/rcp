@@ -1,8 +1,9 @@
 name: base # environment name
 channels: # package channels (the ones that are declared with -c flag)
-  - defaults
-  - nvidia
-  - pytorch
+  - https://conda.rcp.epfl.ch/pkgs/main
+  - https://conda.rcp.epfl.ch/pkgs/free
+  - https://conda.rcp.epfl.ch/nvidia
+  - https://conda.rcp.epfl.ch/pytorch
   - pyg
 dependencies: # desired packages, add or remove to satisfy youre requirements
   - python=3.10

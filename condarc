@@ -1,0 +1,2 @@
+remote_connect_timeout_secs: 30
+remote_max_retriesr: 10
