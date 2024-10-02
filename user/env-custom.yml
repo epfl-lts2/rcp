@@ -1,7 +1,8 @@
 name: base # environment name
 channels: # package channels (the ones that are declared with -c flag)
-  - defaults
-  - conda-forge
+  - https://conda.rcp.epfl.ch/pkgs/main
+  - https://conda.rcp.epfl.ch/pkgs/free
+  - https://conda.rcp.epfl.ch/conda-forge
 dependencies: # desired packages, add or remove to satisfy youre requirements
   - networkx
   - pip:

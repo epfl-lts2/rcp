@@ -17,3 +17,4 @@ dependencies: # desired packages, add or remove to satisfy youre requirements
   - numpy
   - matplotlib
   - jupyterlab
+  - pandas
