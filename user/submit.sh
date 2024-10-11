@@ -15,7 +15,7 @@ runai submit \
     --tty \
     --stdin \
     --large-shm \
-    --gpu gpu_fraction  \ 
+    --gpu gpu_fraction  \
     --name <job name>  \
 	--image $IMAGE \
 	--pvc lts2-scratch:/rcp  \
