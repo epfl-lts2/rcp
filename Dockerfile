@@ -1,5 +1,5 @@
 # Getting base image with platform specified (important if you build on Apple Silicon)
-FROM --platform=linux/amd64 mambaorg/micromamba:1-jammy-cuda-11.8.0
+FROM --platform=linux/amd64 mambaorg/micromamba:git-73cc7ba-jammy-cuda-12.1.1
 
 USER root
 # Installing ssh, rsync, rclone, anaconda, vscode-server
