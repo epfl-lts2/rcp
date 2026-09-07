@@ -3,18 +3,25 @@ channels: # package channels (the ones that are declared with -c flag)
   - https://conda.rcp.epfl.ch/pkgs/main
   - https://conda.rcp.epfl.ch/pkgs/free
   - https://conda.rcp.epfl.ch/nvidia
-  - https://conda.rcp.epfl.ch/pytorch
-  - pyg
 dependencies: # desired packages, add or remove to satisfy youre requirements
-  - python=3.10
-  - pytorch=2.1.2 
-  - torchvision=0.16.2
-  - torchaudio=2.1.2
-  - pytorch-cuda=12.1
-  - pyg
+  - python=3.12
   - scikit-learn
   - scipy
   - numpy
   - matplotlib
   - jupyterlab
   - pandas
+  - networkx
+  - pip:
+    - torch==2.10.0
+    - torchvision==0.25.0
+    - torchaudio==2.10.0
+    - pyg_lib 
+    - torch_scatter 
+    - torch_sparse 
+    - torch_cluster 
+    - torch_spline_conv
+    - torch_geometric
+    - wandb
+    
+

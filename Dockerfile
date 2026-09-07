@@ -15,7 +15,7 @@ WORKDIR /tmp
 ENV MAMBA_ROOT_PREFIX=/opt/conda
 ENV MAMBA_DISABLE_LOCKFILE=TRUE
 ENV PIP_EXTRA_INDEX_URL="https://download.pytorch.org/whl/cu128"
-ENV PIP_FIND_LINKS="https://data.pyg.org/whl/torch-2.7.0+cu128.html"
+ENV PIP_FIND_LINKS="https://data.pyg.org/whl/torch-2.10.0+cu128.html"
 
 COPY environment.yml .
 COPY condarc ${MAMBA_ROOT_PREFIX}
